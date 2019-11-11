@@ -1,0 +1,1 @@
+inventario "inventario" inventario, venta, venta "venta" venta. inventario.

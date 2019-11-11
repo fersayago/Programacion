@@ -8,3 +8,15 @@ MCD(X, Y) = MCD(Y, X)
 Si X > Y => MCD(X, Y) = MCD(X–Y, Y).
 """
 
+def MCD(num1, num2):
+    if num1 == num2:
+        return num1
+    else:
+        if num1 > num2:
+            return MCD(num1-num2, num2)
+        else:
+            return MCD(num2, num1)
+
+
+print(MCD(2000,104473))
+
