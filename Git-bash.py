@@ -5,19 +5,13 @@ git status #nos muestra el estado actual del repo
 
 git stash #nos guarda los cambios en una pila "separada"
 
-#Clonnar proyecto
+#PARA CLONAR PROYECTOS
 
 git clone htpps://
 
-#para subir
+#PARA BAJAR EL PROYECTO
 
-git add . #steagea los cambios 
-
-git commit -m  "Mensaje de que rompi" #empeaquet los cambios stageados
-
-git push origin develop  #sube cambios al repo remoto
-
-#Para bajar
+git pull origin develp #trae todo lo que se modifico en el branch
 
 git checkout -b develop #crear un branch
 
@@ -25,4 +19,10 @@ hit checkout develop #cambia al branch develop
 
 git branch #chequear branches
 
-git pull origin develp #trae todo lo que se modifico en el branch
+#PARA SUBIR REPOS
+
+git add . #steagea los cambios 
+
+git commit -m  "Mensaje del commit" #empeaqueta los cambios stageados
+
+git push origin develop  #sube cambios al repo remoto
