@@ -53,6 +53,7 @@ Entero.prototype.por = function (multiplicador) {
     if (multiplicador instanceof Entero) {
         return new Entero (this.value*multiplicador.value);
     } else {
+        //ARREGLADO MultiplicacionDeEnteroPorFraccion
         let divisor = multiplicador.denominador;
         let dividendo = this.por(multiplicador.numerador);
         return dividendo.dividido(divisor);
@@ -125,8 +126,10 @@ Fraccion.prototype.mas = function (sumando) {
     
         return nuevoNumerador.dividido(nuevoDenominador);
     } else {
-        //ARREGLAR SumaDeFraccionYEntero
-        return null
+        //ARREGLADO SumaDeFraccionYEntero
+        let divisor = this.denominador;
+        let dividendo = sumando.por(this.denominador).mas(this.numerador)
+        return dividendo.dividido(divisor);
     }
 };
 
