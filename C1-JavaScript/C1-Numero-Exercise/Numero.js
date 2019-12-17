@@ -65,6 +65,9 @@ Entero.prototype.dividido = function(divisor) {
         return Fraccion.dividir(this, divisor);
     } else {
         //ARREGLAR DivisionDeEnteroPorFraccion
+        dividendo = this.por(divisor.denominador)
+        divisor = uno.por(divisor.numerador)
+        return dividendo.dividido(divisor)
     }
 };
 
@@ -134,21 +137,32 @@ Fraccion.prototype.mas = function (sumando) {
 };
 
 Fraccion.prototype.por = function (multiplicador) {
-    return this.numerador.por(multiplicador.numerador).
-    dividido(this.denominador.por(multiplicador.denominador));
+    if (multiplicador instanceof Fraccion){
+        return this.numerador.por(multiplicador.numerador).
+        dividido(this.denominador.por(multiplicador.denominador));
+    } else {
+        //ARREGLADO MultiplicacionDeFraccionPorEntero
+        let divisor = this.denominador;
+        let dividendo = this.numerador.por(multiplicador);
+        return dividendo.dividido(divisor)
+    }
 };
 
 Fraccion.prototype.dividido = function (divisor) {
-    return this.numerador.por(divisor.denominador).
-        dividido(this.denominador.por(divisor.numerador));
+    if (divisor.esCero()) {
+        //ARREGLADO NoSePuedeDividirFraccionesPorCero
+        throw new Error (
+            Numero.prototype.DESCRIPCION_DE_ERROR_NO_SE_PUEDE_DIVIDIR_POR_CERO);
+    } else if (divisor instanceof Fraccion) {
+        return this.numerador.por(divisor.denominador).
+            dividido(this.denominador.por(divisor.numerador));
+    } else {
+        //ARREGLAR DivisionDeFraccionPorEntero
+        dividendo = this.numerador.por(uno)
+        divisor = this.denominador.por(divisor)
+        return dividendo.dividido(divisor)
+    }
 };
-
-/*
-
-
-
-
-*/
 
 var assert = require('assert');
 assert.isTrue = function (aBoolean) {
